@@ -1,0 +1,178 @@
+/* reactTableComponent.css */
+
+.default-filter-input {
+  height: 25px !important;
+  font-size: 12px !important;
+  background-color: white !important;
+  margin-top: 10px !important;
+  border-radius: 0 !important;
+  border-right: none !important;
+}
+
+.table-container {
+  border: 1px solid #e0e0e0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  max-height: 600px !important;
+  overflow-y: auto !important; /* Enable vertical scrolling */
+}
+
+.table {
+  width: 100% !important;
+  /* border: 1px solid #e0e0e0 !important; */
+  border-collapse: collapse; /* Ensure table borders are collapsed */
+}
+
+.table-header {
+  background-color: white !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick to the top of the container */
+}
+
+.table-header-cell {
+  padding: 5px !important;
+  text-align: left !important;
+  background-color: #f3f3f3 !important;
+  font-weight: 500 !important;
+  border: 1px solid #e0e0e0 !important;
+  position: relative !important;
+}
+
+.ulb-header {
+  padding-right: 44px !important;
+}
+
+.header-content {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.resizer {
+  display: inline-block !important;
+  width: 10px !important;
+  height: 100% !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  border-color: #e0e0e0 !important;
+  transform: translateX(50%) !important;
+  touch-action: none !important;
+  background-color: transparent !important;
+}
+
+.clear-filter-icon {
+  position: absolute !important;
+  right: 0 !important;
+  top: 20% !important;
+  transform: translateY(-50%) !important;
+  height: 42px !important;
+  cursor: pointer !important;
+  border: 1px solid #e0e0e0 !important;
+  background-color: transparent !important;
+  padding-top: 8px !important;
+}
+
+.table-body {
+  font-size: 14px !important;
+  font-weight: normal !important;
+  max-height: 500px; /* Limit the height for scroll */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.table-row {
+  background-color: white !important;
+}
+
+.table-row:nth-of-type(even) {
+  background-color: #f3f3f3 !important;
+}
+
+.table-cell {
+  padding: 6px !important;
+  text-align: center !important;
+  border: 1px solid #e0e0e0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.total-items {
+  margin-left: 8px !important;
+  margin-top: 8px !important;
+}
+
+.pagination {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+
+.pagination-controls {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+
+.pagination-input {
+  margin: 0 8px !important;
+  border-radius: 0 !important;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 0 !important;
+}
+
+.pagination-input-inner {
+  text-align: center !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.rows-per-page-select {
+  height: 25px !important;
+  width: 70px !important;
+  margin-right: 10px !important;
+  border-radius: 0 !important;
+}
+
+.pagination-info {
+  margin-right: 8px !important;
+}
+
+.action-icon {
+  width: 100% !important;
+  height: 24px !important;
+  border-radius: 2px !important;
+  transition: transform 1s !important;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    max-height: none !important;
+  }
+
+  .table-header-cell {
+    font-size: 12px !important;
+  }
+
+  .table-cell {
+    font-size: 12px !important;
+  }
+
+  .pagination {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .pagination-controls {
+    margin-bottom: 10px !important;
+  }
+
+  .pagination-input {
+    width: 50px !important;
+  }
+}
