@@ -1,8 +1,6 @@
-/* reactTableComponent.css */
-
 .default-filter-input {
   height: 25px !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   background-color: white !important;
   margin-top: 10px !important;
   border-radius: 0 !important;
@@ -15,21 +13,19 @@
   flex-direction: column !important;
   gap: 20px !important;
   max-height: 600px !important;
-  overflow-y: auto !important; /* Enable vertical scrolling */
 }
 
 .table {
   width: 100% !important;
-  /* border: 1px solid #e0e0e0 !important; */
-  border-collapse: collapse; /* Ensure table borders are collapsed */
+  border-collapse: collapse !important;
 }
 
 .table-header {
   background-color: white !important;
-  font-size: 14px !important;
+  font-size: 16px !important;
   font-weight: 600 !important;
-  position: sticky; /* Make the header sticky */
-  top: 0; /* Stick to the top of the container */
+  position: sticky !important;
+  top: 0 !important;
 }
 
 .table-header-cell {
@@ -39,10 +35,18 @@
   font-weight: 500 !important;
   border: 1px solid #e0e0e0 !important;
   position: relative !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
 }
 
-.ulb-header {
-  padding-right: 44px !important;
+.header-text {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.header {
+  padding-right: 34px !important;
 }
 
 .header-content {
@@ -70,16 +74,17 @@
   transform: translateY(-50%) !important;
   height: 42px !important;
   cursor: pointer !important;
+  border-top: none;
   border: 1px solid #e0e0e0 !important;
   background-color: transparent !important;
   padding-top: 8px !important;
 }
 
 .table-body {
-  font-size: 14px !important;
+  font-size: 16px !important;
   font-weight: normal !important;
-  max-height: 500px; /* Limit the height for scroll */
-  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 500px !important; /* Limit the height for scroll */
+  overflow-y: auto !important; /* Enable vertical scrolling */
 }
 
 .table-row {
@@ -109,6 +114,7 @@
   justify-content: space-between !important;
   align-items: center !important;
   flex-wrap: wrap !important;
+  padding-bottom: 10px;
 }
 
 .pagination-controls {
@@ -156,11 +162,11 @@
   }
 
   .table-header-cell {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 
   .table-cell {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 
   .pagination {
