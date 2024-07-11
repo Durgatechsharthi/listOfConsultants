@@ -201,10 +201,11 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
             const { key, ...headerGroupProps } = hg.getHeaderGroupProps();
             return (
               <tr key={key} {...headerGroupProps}>
-                {hg.headers.map((column) => {
+                {hg.headers.map((column, columnIndex, headers) => {
                   const { key, ...rest } = column.getHeaderProps(
                     column.getSortByToggleProps()
                   );
+                  const isLastColumn = columnIndex === headers.length - 1;
                   return (
                     <th
                       key={key}
@@ -230,7 +231,7 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
                           className="resizer"
                         />
                       )}
-                      {column.id === "ulb" && (
+                      {isLastColumn && (
                         <Tooltip title="Clear Filter">
                           <FilterListSharpIcon
                             onClick={handleClearFilters}
@@ -322,7 +323,7 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
   );
 
   return (
-   <div className="table-container">
+    <div className="table-container">
       <div className="overflow-auto">{renderTable()}</div>
       <div>
         <span className="total-items">Total Items: {tabledata.length}</span>
