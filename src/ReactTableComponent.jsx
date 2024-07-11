@@ -322,9 +322,11 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
   );
 
   return (
-    <div className="table-container">
-      {renderTable()}
-      <span className="total-items">Total Items: {tabledata.length}</span>
+   <div className="table-container">
+      <div className="overflow-auto">{renderTable()}</div>
+      <div>
+        <span className="total-items">Total Items: {tabledata.length}</span>
+      </div>
       <div className="pagination">{renderPagination()}</div>
     </div>
   );
