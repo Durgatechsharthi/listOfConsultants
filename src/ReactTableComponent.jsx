@@ -79,7 +79,7 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
         Filter: DefaultColumnFilter,
         disableFilters: false,
         disableSortBy: false,
-        width: 70,
+        width: 72,
         maxWidth: 60,
       },
       ...tableColumns,
@@ -116,7 +116,7 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
       Filter: DefaultColumnFilter,
       minWidth: 72,
       width: 150,
-      maxWidth: 400,
+      maxWidth: 900,
     }),
     []
   );
@@ -210,12 +210,12 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
                     <th
                       key={key}
                       className={`table-header-cell ${
-                        column.id === "ulb" ? "ulb-header" : ""
+                        isLastColumn ? "header max-w-fit" : ""
                       }`}
                       {...rest}
                     >
                       <div className="header-content">
-                        <span>
+                        <span className="header-text">
                           {column.render("Header")}
                           {column.isSorted && (
                             <span>{column.isSortedDesc ? " 🔼" : " 🔽"}</span>
