@@ -115,7 +115,7 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
     () => ({
       Filter: DefaultColumnFilter,
       minWidth: 72,
-      width: 150,
+      width: 160,
       maxWidth: 900,
     }),
     []
@@ -199,6 +199,7 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
         <thead className="table-header">
           {headerGroups.map((hg) => {
             const { key, ...headerGroupProps } = hg.getHeaderGroupProps();
+
             return (
               <tr key={key} {...headerGroupProps}>
                 {hg.headers.map((column, columnIndex, headers) => {
@@ -210,16 +211,18 @@ const ReactTableComponent = ({ tableData, tableColumns, isAction }) => {
                     <th
                       key={key}
                       className={`table-header-cell ${
-                        isLastColumn ? "header max-w-fit" : ""
+                        isLastColumn ? "header" : ""
                       }`}
                       {...rest}
                     >
                       <div className="header-content">
                         <span className="header-text">
                           {column.render("Header")}
-                          {column.isSorted && (
-                            <span>{column.isSortedDesc ? " 🔼" : " 🔽"}</span>
-                          )}
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? " 🔽"
+                              : " 🔼"
+                            : ""}
                         </span>
                         <div>
                           {column.canFilter ? column.render("Filter") : null}
