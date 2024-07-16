@@ -61,6 +61,15 @@ const schema = z.object({
     .min(2, { message: "Enter COA registration number" }),
 });
 
+const menuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: 200,
+      width: 250,
+    },
+  },
+};
+
 export default function ConsultantSignupForm() {
   const randomString = Math.random().toString(36).slice(8);
   const [captcha, setCaptcha] = useState(randomString);
@@ -73,21 +82,26 @@ export default function ConsultantSignupForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(schema), mode: "onTouched" });
+  } = useForm({ resolver: zodResolver(schema), mode: "all" });
 
   const uploadData = (data) => {
     console.log(data);
   };
 
   const [userType, setUserType] = useState("");
+  const [userQualification, setUserQualification] = useState("");
 
   const handleUserType = (event) => {
     setUserType(event.target.value);
   };
 
+  const handleUserQualification = (event) => {
+    setUserQualification(event.target.value);
+  };
+
   return (
     <form onSubmit={handleSubmit(uploadData)} className="flex flex-col gap-3">
-      <div className="flex justify-between bg-purple-500 text-white px-5 mt-2 py-2 rounded-sm">
+      <div className="flex justify-between bg-purple-600 text-white px-5 mt-2 py-2 rounded-sm">
         Personal Details
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -106,7 +120,7 @@ export default function ConsultantSignupForm() {
           sx={{ minWidth: 175 }}
           error={errors.user_type ? true : false}
         >
-          <InputLabel id="user-type-input">Select a division *</InputLabel>
+          <InputLabel id="user-type-input">Select Type of User *</InputLabel>
           <Select
             {...register("user_type")}
             labelId="user-type-input"
@@ -114,8 +128,15 @@ export default function ConsultantSignupForm() {
             onChange={handleUserType}
             value={userType}
             label="Select Type of User *"
+            MenuProps={menuProps}
           >
-            <MenuItem value={"Consultant"}>Consultant</MenuItem>
+            <MenuItem value={"Architect"}>Architect</MenuItem>
+            <MenuItem value={"Engineer"}>Engineer</MenuItem>
+            <MenuItem value={"Group or Agency"}>Group or Agency</MenuItem>
+            <MenuItem value={"Structural Engineer"}>
+              Structural Engineer
+            </MenuItem>
+            <MenuItem value={"Supervisor"}>Supervisor</MenuItem>
           </Select>
           <FormHelperText>
             {errors.user_type && errors.user_type.message}
@@ -133,18 +154,41 @@ export default function ConsultantSignupForm() {
           {...register("user_id_proof_number")}
           autoComplete="off"
         />
-        <TextField
-          error={errors.user_qualification ? true : false}
-          helperText={
-            errors.user_qualification && errors.user_qualification.message
-          }
-          id="user-qualification"
-          label="Select The Qualification *"
+        <FormControl
           variant="standard"
-          className="w-full"
-          {...register("user_qualification")}
-          autoComplete="off"
-        />
+          sx={{ minWidth: 175 }}
+          error={errors.user_qualification ? true : false}
+        >
+          <InputLabel id="user-qualification-input">
+            Select The Qualification *
+          </InputLabel>
+          <Select
+            {...register("user_qualification")}
+            labelId="user-qualification-input"
+            id="user-qualification"
+            onChange={handleUserQualification}
+            value={userQualification}
+            label="Select The Qualification *"
+            MenuProps={menuProps}
+          >
+            <MenuItem value={"B.E Civil"}>B.E Civil</MenuItem>
+            <MenuItem value={"B.Arch"}>B.Arch</MenuItem>
+            <MenuItem value={"Diploma in Civil"}>Diploma in Civil</MenuItem>
+            <MenuItem value={"Construction and architecture"}>
+              Construction and architecture
+            </MenuItem>
+            <MenuItem value={"M.Arch"}>M.Arch</MenuItem>
+            <MenuItem value={"M.Planning"}>M.Planning</MenuItem>
+            <MenuItem value={"B.Planning"}>B.Planning</MenuItem>
+            <MenuItem value={"M.Tech urban Planning"}>
+              M.Tech urban Planning
+            </MenuItem>
+            <MenuItem value={"Others"}>Others</MenuItem>
+          </Select>
+          <FormHelperText>
+            {errors.user_qualification && errors.user_qualification.message}
+          </FormHelperText>
+        </FormControl>
         <TextField
           error={errors.user_experience ? true : false}
           helperText={errors.user_experience && errors.user_experience.message}
@@ -170,7 +214,7 @@ export default function ConsultantSignupForm() {
         />
       </div>
 
-      <div className="flex justify-between bg-purple-500 text-white mt-2 px-5 py-2 rounded-sm">
+      <div className="flex justify-between bg-purple-600 text-white mt-2 px-5 py-2 rounded-sm">
         Contact Details
       </div>
       <div className="grid grid-cols-1 gap-4">
@@ -239,7 +283,7 @@ export default function ConsultantSignupForm() {
         />
       </div>
 
-      <div className="flex justify-between bg-purple-500 text-white mt-2 px-5 py-2 rounded-sm">
+      <div className="flex justify-between bg-purple-600 text-white mt-2 px-5 py-2 rounded-sm">
         Login Details
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -307,7 +351,7 @@ export default function ConsultantSignupForm() {
           >
             <TbReload className="text-[#0288d1] text-xl" />
           </button>
-          <div className="border-2 border-blue-500 w-full h-10 text-center pt-1 text-lg font-semibold order-1 md:order-2 md:w-2/6">
+          <div className="border-2 border-blue-600 w-full h-10 text-center pt-1 text-lg font-semibold order-1 md:order-2 md:w-2/6">
             {captcha}
           </div>
         </div>
